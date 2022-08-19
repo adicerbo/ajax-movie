@@ -67,7 +67,7 @@ function handleGetData() {
         $title.text(data.Title);
         $year.text(data.Year)
         $rated.text(data.Rated)
-        $('main').append(`<img src = '${data.Poster}' alt = ''`)
+        $('main').append(`<img src = '${data.Poster}' alt='${data.Title}'/>`)
     },
         function (error) {
             console.log('we broke it');
