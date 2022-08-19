@@ -19,19 +19,12 @@
 
 // console.log($.ajax('http://www.omdbapi.com/?i=tt3896198&apikey=cc2c263a&t=titan'))
 
-const URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=cc2c263a&t=titan';
-
-$.ajax(URL).then(function (data) {
-    console.log('movie is ready');
-    console.log(data)
-},
-    function (error) {
-        console.log('we broke it');
-        console.log(error);
-    }
-);
+const URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=cc2c263a&t=frozen';
 
 
+///////////////////////////////////
+// ALSO COULD TYPE THIS WAY
+///////////////////////////////////
 // const promise = $.ajax({
 //     url:'http://www.omdbapi.com/?i=tt3896198&apikey=cc2c263a&'
 // });
@@ -44,3 +37,41 @@ $.ajax(URL).then(function (data) {
 //         console.log('bad request: ', error);
 //     }
 // );
+
+///////////////////////////////////
+// VARIABLES
+///////////////////////////////////
+
+
+///////////////////////////////////
+// CACHED ELEMENTS
+///////////////////////////////////
+const $title = $('#title')
+const $year = $('#year')
+const $rated = $('#rated')
+
+///////////////////////////////////
+// EVENT LISTENERS
+///////////////////////////////////
+
+
+///////////////////////////////////
+// FUNCTIONS
+///////////////////////////////////
+function handleGetData() {
+
+
+    $.ajax(URL).then(function (data) {
+        console.log('movie is ready');
+        console.log(data);
+        $title.text(data.Title);
+        $year.text(data.Year)
+        $rated.text(data.Rated)
+        $('main').append(`<img src = '${data.Poster}' alt = ''`)
+    },
+        function (error) {
+            console.log('we broke it');
+            console.log(error);
+        }
+    );
+};
